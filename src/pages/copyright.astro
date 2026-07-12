@@ -1,0 +1,224 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<Layout
+  title="Copyright — AshPhotoStudio"
+  description="Copyright and image ownership notice for AshPhotoStudio. Many images are sourced from Pinterest; all rights belong to the respective owners."
+>
+  <Header />
+
+  <main class="legal-page">
+    <div class="legal-inner">
+      <div class="legal-header">
+        <p class="eyebrow">Legal</p>
+        <h1 class="legal-title font-display">COPYRIGHT</h1>
+        <p class="legal-date">Last updated: January 2026</p>
+      </div>
+
+      <div class="legal-body">
+
+        <section class="legal-section highlight">
+          <h2>Image Ownership Disclaimer</h2>
+          <p>
+            Most of the images displayed on this website have been sourced from
+            <strong>Pinterest</strong>. AshPhotoStudio does <strong>not</strong> claim
+            ownership of any such images. All rights are reserved for the
+            respective original owners and creators of those images.
+          </p>
+          <p>
+            These images are used for the sole purpose of showcasing photography
+            styles, categories, and aesthetic references — not as a claim of
+            authorship.
+          </p>
+        </section>
+
+        <section class="legal-section">
+          <h2>Before &amp; After Images</h2>
+          <p>
+            The comparison images on the <a href="/compare">Before &amp; After</a> page
+            are original works edited by Ash Paul and are the exclusive property of
+            AshPhotoStudio. These may not be reproduced, distributed, or used without
+            express written permission.
+          </p>
+        </section>
+
+        <section class="legal-section">
+          <h2>Website Content</h2>
+          <p>
+            All original written content, design, layout, and branding on this website
+            (including the logo, studio name, and copy) are the property of
+            AshPhotoStudio © 2026. Unauthorised reproduction of original content is
+            not permitted.
+          </p>
+        </section>
+
+        <section class="legal-section">
+          <h2>DMCA / Takedown Requests</h2>
+          <p>
+            If you are the owner of an image appearing on this site and would like it
+            removed, or if you have any copyright-related concerns, please contact us
+            directly and we will act promptly.
+          </p>
+          <p>
+            We take intellectual property rights seriously and will remove any image
+            upon a valid request without delay.
+          </p>
+        </section>
+
+        <section class="legal-section">
+          <h2>Contact Us About Copyright</h2>
+          <p>
+            For any copyright issues, questions, or takedown requests, please email:
+          </p>
+          <p class="contact-email">
+            <a href="mailto:1ari.tive@gmail.com">1ari.tive@gmail.com</a>
+          </p>
+          <p>
+            We aim to respond to all copyright-related enquiries within 48 hours.
+            Thank you for understanding!
+          </p>
+        </section>
+
+      </div>
+
+      <div class="legal-back">
+        <a href="/" class="back-link">&larr; Back to Home</a>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .legal-page {
+    padding-top: 68px;
+    min-height: 100vh;
+  }
+
+  .legal-inner {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 4rem 2rem 5rem;
+  }
+
+  .legal-header {
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #2a2a2a;
+  }
+
+  .eyebrow {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #a0a0a0;
+    margin-bottom: 0.5rem;
+  }
+
+  .legal-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1;
+    letter-spacing: -0.01em;
+    margin-bottom: 0.75rem;
+  }
+
+  .legal-date {
+    font-size: 0.8rem;
+    color: #555;
+  }
+
+  .legal-body {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .legal-section {
+    padding: 1.75rem;
+    border: 1px solid #2a2a2a;
+    background: #111111;
+  }
+
+  /* Highlight the main disclaimer */
+  .legal-section.highlight {
+    border-color: #3a3a3a;
+    background: #141414;
+  }
+
+  .legal-section h2 {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #ffffff;
+    margin-bottom: 1rem;
+    padding-bottom: 0.625rem;
+    border-bottom: 1px solid #2a2a2a;
+  }
+
+  .legal-section p {
+    font-size: 0.9375rem;
+    color: #a0a0a0;
+    line-height: 1.8;
+    margin-bottom: 0.75rem;
+  }
+
+  .legal-section p:last-child {
+    margin-bottom: 0;
+  }
+
+  .legal-section a {
+    color: #e0e0e0;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color 0.2s;
+  }
+
+  .legal-section a:hover {
+    color: #ffffff;
+  }
+
+  .legal-section strong {
+    color: #e0e0e0;
+    font-weight: 600;
+  }
+
+  .contact-email {
+    font-size: 1rem !important;
+    margin: 0.25rem 0 0.75rem !important;
+  }
+
+  .contact-email a {
+    font-size: 1rem;
+    font-weight: 500;
+  }
+
+  .legal-back {
+    margin-top: 2.5rem;
+  }
+
+  .back-link {
+    font-size: 0.875rem;
+    color: #555;
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    transition: color 0.2s;
+  }
+
+  .back-link:hover {
+    color: #a0a0a0;
+  }
+
+  @media (max-width: 640px) {
+    .legal-inner {
+      padding: 3rem 1rem 4rem;
+    }
+  }
+</style>

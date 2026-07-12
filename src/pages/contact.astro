@@ -1,0 +1,766 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+const services = [
+  "Wedding Photography",
+  "Honeymoon Shoots",
+  "Baby Shoots",
+  "Family Shoots",
+  "Passport & Formal Photos",
+  "Pet Shoots",
+  "Photojournalism",
+  "Documentary Photography",
+  "Architecture & Interior Photography",
+];
+
+const reviews = [
+  {
+    name: "Priya Mehta",
+    stars: 5,
+    category: "Wedding",
+    initials: "PM",
+    text: "Ash captured our wedding so beautifully — every candid, every tear, every laugh. We look at these photos every anniversary. Truly magical work.",
+  },
+  {
+    name: "Rohan & Sneha D.",
+    stars: 5,
+    category: "Honeymoon",
+    initials: "RS",
+    text: "We booked Ash for our Goa honeymoon shoot and the results were beyond our expectations. He made us feel completely at ease. The photos look like they're from a magazine!",
+  },
+  {
+    name: "Kavita Iyer",
+    stars: 5,
+    category: "Baby Shoot",
+    initials: "KI",
+    text: "My little one is only 3 months old and Ash was so patient and gentle throughout. The photos are absolutely precious — I'm getting them all framed.",
+  },
+  {
+    name: "The Sharma Family",
+    stars: 5,
+    category: "Family Shoot",
+    initials: "SF",
+    text: "We've been trying to get a good family photo for years — Ash nailed it in the first session. The kids were laughing, everyone looked natural. Highly recommend!",
+  },
+  {
+    name: "Arjun Nair",
+    stars: 5,
+    category: "Architecture",
+    initials: "AN",
+    text: "We hired Ash for our new hotel property shots and the photos have been a game changer for our website and marketing material. Incredibly professional.",
+  },
+  {
+    name: "Meghna Joshi",
+    stars: 5,
+    category: "Pet Shoot",
+    initials: "MJ",
+    text: "My golden retriever Bruno has never looked so handsome! Ash has a gift for getting animals to cooperate just long enough. We love every single shot.",
+  },
+  {
+    name: "Suresh Kapoor",
+    stars: 5,
+    category: "Passport Photo",
+    initials: "SK",
+    text: "Quick, professional, and the photos were perfect on the first try. Best passport photo experience I've ever had — no retakes needed!",
+  },
+  {
+    name: "Ananya & Dev",
+    stars: 5,
+    category: "Wedding",
+    initials: "AD",
+    text: "From the pre-wedding shoot to the reception, Ash was everywhere at the right moment. Our families were blown away by the album. Worth every rupee.",
+  },
+];
+---
+
+<Layout
+  title="Contact Us — AshPhotoStudio"
+  description="Book a photography session with Ash Paul in Mumbai. Fill in the form to open a WhatsApp chat instantly. Weddings, families, pets & more."
+>
+  <Header />
+
+  <main class="contact-page">
+    <!-- ── Contact + Form + Map ────────────────────────────── -->
+    <section class="contact-section">
+      <div class="section-header">
+        <p class="section-eyebrow">Get in Touch</p>
+        <h1 class="contact-title font-display">CONTACT US</h1>
+        <p class="contact-sub">
+          Ready to book or just have questions? Fill in the form and it'll open a WhatsApp
+          chat directly with Ash — no bots, no waiting.
+        </p>
+      </div>
+
+      <div class="contact-grid">
+        <!-- Column 1: Contact details -->
+        <div class="contact-info glass-panel">
+          <h2 class="col-heading">Contact Details</h2>
+
+          <ul class="info-list">
+            <li>
+              <div class="info-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.33h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6.09 6.09l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              </div>
+              <div>
+                <span class="info-label">Phone / WhatsApp</span>
+                <a href="tel:+919699766852" class="info-value">+91 96997 66852</a>
+              </div>
+            </li>
+            <li>
+              <div class="info-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              </div>
+              <div>
+                <span class="info-label">Email</span>
+                <a href="mailto:ashpaul102@email.com" class="info-value">ashpaul102@email.com</a>
+              </div>
+            </li>
+            <li>
+              <div class="info-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              </div>
+              <div>
+                <span class="info-label">Studio Location</span>
+                <span class="info-value">Churchgate, Mumbai<br />Maharashtra, India</span>
+              </div>
+            </li>
+          </ul>
+
+          <a
+            href="https://wa.me/919699766852"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="wa-btn"
+          >
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
+            </svg>
+            Chat on WhatsApp
+          </a>
+
+          <div class="hours-block">
+            <h3 class="hours-title">Studio Hours</h3>
+            <p>Monday – Saturday: 9 AM – 7 PM</p>
+            <p>Sunday: By appointment</p>
+          </div>
+        </div>
+
+        <!-- Column 2: Enquiry form -->
+        <div class="contact-form-wrap glass-panel">
+          <h2 class="col-heading">Send an Enquiry</h2>
+          <p class="form-note">This will open WhatsApp with your message pre-filled — no form backend needed.</p>
+
+          <form id="enquiry-form" novalidate>
+            <div class="form-group">
+              <label for="name">Your Name <span class="required">*</span></label>
+              <input type="text" id="name" name="name" placeholder="Priya Mehta" required autocomplete="name" />
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="you@example.com" autocomplete="email" />
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone</label>
+                <input type="tel" id="phone" name="phone" placeholder="+91 98765 43210" autocomplete="tel" />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="service">Service Interested In <span class="required">*</span></label>
+              <div class="select-wrap">
+                <select id="service" name="service" required>
+                  <option value="" disabled selected>Select a service…</option>
+                  {services.map(s => <option value={s}>{s}</option>)}
+                </select>
+                <svg class="select-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="message">Message <span class="required">*</span></label>
+              <textarea id="message" name="message" rows="4" placeholder="Tell Ash a bit about the shoot you have in mind…" required></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn">
+              <svg viewBox="0 0 24 24" fill="currentColor" style="width:18px;height:18px;flex-shrink:0">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
+              </svg>
+              Send on WhatsApp →
+            </button>
+            <p id="form-error" class="form-error" style="display:none">Please fill in Name, Service, and Message.</p>
+            <p class="privacy-note">
+              By submitting, you agree to our <a href="/privacy">Privacy Policy</a>.
+              We don't store any of your data — this form simply pre-fills a WhatsApp message.
+            </p>
+          </form>
+        </div>
+
+        <!-- Column 3: Map -->
+        <div class="map-wrap glass-panel">
+          <h2 class="col-heading">Find Us</h2>
+          <div class="map-frame">
+            <iframe
+              title="AshPhotoStudio location — Churchgate, Mumbai"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15086.098398726015!2d72.81651!3d18.93213!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7ce1ade00a3d7%3A0xc2e0a95f04e91b4d!2sChurchgate%2C%20Mumbai%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+              width="100%"
+              height="100%"
+              style="border:0;"
+              allowfullscreen
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+          <p class="map-address">
+            Churchgate, Mumbai,<br />Maharashtra 400020, India
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Reviews ─────────────────────────────────────────── -->
+    <section class="reviews-section">
+      <div class="reviews-inner">
+        <div class="reviews-header">
+          <p class="section-eyebrow">Client Testimonials</p>
+          <h2 class="reviews-title font-display">
+            Still Thinking Hard? Here's What Our Clients Say!
+          </h2>
+        </div>
+
+        <div class="reviews-grid">
+          {reviews.map(review => (
+            <article class="review-card glass-panel">
+              <header class="review-header">
+                <div class="reviewer-avatar" aria-hidden="true">{review.initials}</div>
+                <div class="reviewer-info">
+                  <strong class="reviewer-name">{review.name}</strong>
+                  <span class="reviewer-category">{review.category}</span>
+                </div>
+              </header>
+              <div class="stars" aria-label={`${review.stars} stars`}>
+                {"★".repeat(review.stars)}
+              </div>
+              <blockquote class="review-text">
+                <p>"{review.text}"</p>
+              </blockquote>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .contact-page {
+    padding-top: 68px;
+  }
+
+  /* ── Contact section ─────────────────────────────────────── */
+  .contact-section {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+  }
+
+  .section-header {
+    margin-bottom: 3rem;
+  }
+
+  .section-eyebrow {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #a0a0a0;
+    margin-bottom: 0.5rem;
+  }
+
+  .contact-title {
+    font-size: clamp(2.8rem, 5vw, 4.5rem);
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+  }
+
+  .contact-sub {
+    font-size: 1rem;
+    color: #a0a0a0;
+    max-width: 600px;
+    line-height: 1.75;
+  }
+
+  /* 3-col grid */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr 1fr;
+    gap: 1.5rem;
+    align-items: start;
+  }
+
+  /* Column heading */
+  .col-heading {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #a0a0a0;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid #2a2a2a;
+  }
+
+  /* ── Column 1: Contact info ──────────────────────────────── */
+  .contact-info {
+    padding: 2rem;
+  }
+
+  .info-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .info-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.875rem;
+  }
+
+  .info-icon {
+    width: 36px;
+    height: 36px;
+    background: #1a1a1a;
+    border: 1px solid #2a2a2a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .info-icon svg {
+    width: 16px;
+    height: 16px;
+    color: #a0a0a0;
+  }
+
+  .info-label {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #555;
+    margin-bottom: 0.25rem;
+  }
+
+  .info-value {
+    font-size: 0.9rem;
+    color: #e0e0e0;
+    text-decoration: none;
+    line-height: 1.5;
+    transition: color 0.2s;
+  }
+
+  a.info-value:hover {
+    color: #ffffff;
+  }
+
+  /* WhatsApp button */
+  .wa-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.625rem;
+    width: 100%;
+    padding: 0.875rem 1.5rem;
+    background: #25d366;
+    color: #000000;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.02em;
+  }
+
+  .wa-btn svg {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+  }
+
+  .wa-btn:hover {
+    background: #20bc5a;
+  }
+
+  .hours-block {
+    padding: 1rem 0 0;
+    border-top: 1px solid #2a2a2a;
+  }
+
+  .hours-title {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #555;
+    margin-bottom: 0.625rem;
+  }
+
+  .hours-block p {
+    font-size: 0.85rem;
+    color: #a0a0a0;
+    line-height: 1.7;
+  }
+
+  /* ── Column 2: Form ──────────────────────────────────────── */
+  .contact-form-wrap {
+    padding: 2rem;
+  }
+
+  .form-note {
+    font-size: 0.8rem;
+    color: #555;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+  }
+
+  .form-group {
+    margin-bottom: 1.125rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #a0a0a0;
+  }
+
+  .required {
+    color: #888;
+  }
+
+  input,
+  textarea,
+  select {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background: #1a1a1a;
+    border: 1px solid #2a2a2a;
+    color: #ffffff;
+    font-size: 0.9rem;
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.2s;
+    appearance: none;
+    -webkit-appearance: none;
+  }
+
+  input:focus,
+  textarea:focus,
+  select:focus {
+    border-color: #555;
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: #333;
+  }
+
+  textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+
+  .select-wrap {
+    position: relative;
+  }
+
+  .select-wrap select {
+    padding-right: 2.5rem;
+    cursor: pointer;
+  }
+
+  .select-arrow {
+    position: absolute;
+    right: 0.875rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+    color: #555;
+    pointer-events: none;
+  }
+
+  .submit-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.625rem;
+    width: 100%;
+    padding: 0.9rem 1.5rem;
+    background: #ffffff;
+    color: #000000;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    border: 1px solid #ffffff;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-top: 0.5rem;
+  }
+
+  .submit-btn:hover {
+    background: #e0e0e0;
+    border-color: #e0e0e0;
+  }
+
+  .form-error {
+    margin-top: 0.5rem;
+    font-size: 0.8rem;
+    color: #ff6b6b;
+    text-align: center;
+  }
+
+  .privacy-note {
+    margin-top: 0.75rem;
+    font-size: 0.75rem;
+    color: #444;
+    text-align: center;
+    line-height: 1.6;
+  }
+
+  .privacy-note a {
+    color: #666;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    transition: color 0.2s;
+  }
+
+  .privacy-note a:hover {
+    color: #a0a0a0;
+  }
+
+  /* ── Column 3: Map ───────────────────────────────────────── */
+  .map-wrap {
+    padding: 2rem;
+  }
+
+  .map-frame {
+    width: 100%;
+    height: 320px;
+    border: 1px solid #2a2a2a;
+    overflow: hidden;
+    margin-bottom: 1rem;
+  }
+
+  .map-frame iframe {
+    width: 100%;
+    height: 100%;
+    display: block;
+    filter: grayscale(0.5) invert(0.85) hue-rotate(180deg);
+  }
+
+  .map-address {
+    font-size: 0.875rem;
+    color: #a0a0a0;
+    line-height: 1.7;
+  }
+
+  /* ── Reviews section ─────────────────────────────────────── */
+  .reviews-section {
+    border-top: 1px solid #2a2a2a;
+    background: #111111;
+  }
+
+  .reviews-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 5rem 2rem;
+  }
+
+  .reviews-header {
+    margin-bottom: 3rem;
+    text-align: center;
+  }
+
+  .reviews-title {
+    font-size: clamp(1.6rem, 3.5vw, 2.75rem);
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+
+  /* Review card */
+  .review-card {
+    padding: 1.75rem;
+    background: #111111;
+    transition: background 0.2s;
+  }
+
+  .review-card:hover {
+    background: #141414;
+  }
+
+  .review-header {
+    display: flex;
+    align-items: center;
+    gap: 0.875rem;
+    margin-bottom: 1rem;
+  }
+
+  .reviewer-avatar {
+    width: 42px;
+    height: 42px;
+    background: #2a2a2a;
+    border: 1px solid #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #a0a0a0;
+    flex-shrink: 0;
+  }
+
+  .reviewer-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+  }
+
+  .reviewer-name {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #ffffff;
+  }
+
+  .reviewer-category {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #555;
+  }
+
+  .stars {
+    color: #f4c430;
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.875rem;
+  }
+
+  .review-text {
+    margin: 0;
+    padding: 0;
+    border: none;
+  }
+
+  .review-text p {
+    font-size: 0.875rem;
+    color: #a0a0a0;
+    line-height: 1.75;
+    font-style: italic;
+  }
+
+  /* ── Responsive ──────────────────────────────────────────── */
+  @media (max-width: 1100px) {
+    .contact-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .map-wrap {
+      grid-column: 1 / -1;
+    }
+
+    .reviews-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .contact-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .map-wrap {
+      grid-column: auto;
+    }
+
+    .form-row {
+      grid-template-columns: 1fr;
+    }
+
+    .reviews-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .contact-section,
+    .reviews-inner {
+      padding: 3rem 1rem;
+    }
+  }
+</style>
+
+<script>
+  const form = document.getElementById("enquiry-form") as HTMLFormElement;
+  const errorEl = document.getElementById("form-error") as HTMLElement;
+
+  form?.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const name    = (document.getElementById("name")    as HTMLInputElement).value.trim();
+    const service = (document.getElementById("service") as HTMLSelectElement).value;
+    const message = (document.getElementById("message") as HTMLTextAreaElement).value.trim();
+
+    if (!name || !service || !message) {
+      errorEl.style.display = "block";
+      return;
+    }
+
+    errorEl.style.display = "none";
+
+    const text = encodeURIComponent(
+      `Hi Ash! I'm ${name}. I'm interested in ${service}. ${message}`
+    );
+
+    window.open(`https://wa.me/919699766852?text=${text}`, "_blank", "noopener,noreferrer");
+  });
+</script>

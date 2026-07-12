@@ -1,0 +1,107 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+}
+
+const {
+  title = "AshPhotoStudio — Professional Photography in Mumbai",
+  description = "AshPhotoStudio by Ash Paul — professional photography for weddings, honeymoons, families, babies, pets, architecture & more. Based in Churchgate, Mumbai.",
+  ogImage = "/favicon.png",
+} = Astro.props;
+
+const canonicalURL = Astro.url;
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": "https://ashphotostudio.com",
+  "name": "AshPhotoStudio",
+  "description": "Professional photography studio in Mumbai, India. Specialising in weddings, honeymoons, families, babies, pets, architecture, and documentary photography.",
+  "url": "https://ashphotostudio.com",
+  "telephone": "+919699766852",
+  "email": "ashpaul102@email.com",
+  "image": "/favicon.png",
+  "priceRange": "₹₹",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Churchgate",
+    "addressLocality": "Mumbai",
+    "addressRegion": "Maharashtra",
+    "postalCode": "400020",
+    "addressCountry": "IN"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 18.9322,
+    "longitude": 72.8264
+  },
+  "openingHours": "Mo-Su 09:00-19:00",
+  "sameAs": []
+};
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0a0a0a" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+
+    <!-- Primary SEO -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:locale" content="en_IN" />
+    <meta property="og:site_name" content="AshPhotoStudio" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- Local business keywords -->
+    <meta name="keywords" content="photographer Mumbai, wedding photographer Mumbai, photography studio Mumbai, Ash Paul photographer, AshPhotoStudio, professional photography Mumbai, Churchgate photographer" />
+
+    <!-- Robots -->
+    <meta name="robots" content="index, follow" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Local Business Schema -->
+    <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+  </head>
+  <body>
+    <slot />
+    <script>
+      // Smooth anchor scroll polyfill for older browsers
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', e => {
+          const target = document.querySelector(anchor.getAttribute('href'));
+          if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth' });
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

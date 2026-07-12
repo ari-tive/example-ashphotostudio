@@ -1,0 +1,776 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+const services = [
+  {
+    title: "Wedding Photography",
+    description:
+      "Timeless storytelling on your most important day. We blend candid moments with elegantly posed portraits to create a complete visual narrative of your wedding from ceremony to celebration.",
+  },
+  {
+    title: "Honeymoon Shoots",
+    description:
+      "Romantic couple portraits in breathtaking settings. Whether it's a beach, mountains, or a city escape — we travel to you and create images that feel as magical as the trip itself.",
+  },
+  {
+    title: "Baby Shoots",
+    description:
+      "Gentle, warm sessions celebrating new life. We work entirely at your baby's pace to capture those fleeting early expressions, tiny details, and precious first milestones.",
+  },
+  {
+    title: "Family Shoots",
+    description:
+      "Everyone together, in one beautiful frame. Indoor or outdoor, formal or relaxed — we make family portraits feel completely natural and genuinely joyful.",
+  },
+  {
+    title: "Passport & Formal Photos",
+    description:
+      "Professional ID, passport, and corporate headshots done right — quick, crisp, and compliant with all standard government and corporate specifications.",
+  },
+  {
+    title: "Pet Shoots",
+    description:
+      "Your furry family members deserve great photos too. Fun, playful sessions designed around your pet's energy and personality — no two are ever the same.",
+  },
+  {
+    title: "Photojournalism",
+    description:
+      "Real moments, raw and unscripted. Ideal for events, community stories, and editorial assignments that demand authentic visual truth without any staging.",
+  },
+  {
+    title: "Documentary Photography",
+    description:
+      "Long-form visual narratives that tell a complete story — for NGOs, businesses, cultural projects, and personal journeys that deserve to be remembered in full.",
+  },
+  {
+    title: "Architecture & Interior Photography",
+    description:
+      "Showcasing spaces for hotels, motels, builders, and interior designers. We make rooms, facades, and properties look their absolute best for marketing and portfolios.",
+  },
+];
+
+const faqs = [
+  {
+    q: "How do I book a session?",
+    a: "Simply reach out via our Contact page — fill in the form and it'll open a WhatsApp chat directly with Ash. We'll discuss your vision, pick a date, and get you scheduled.",
+  },
+  {
+    q: "How long does a session typically take?",
+    a: "It depends on the type of shoot. Passport photos take 15–20 minutes. Family and baby shoots run 1–2 hours. Wedding coverage can span a full day. We'll give you a clear timeline when booking.",
+  },
+  {
+    q: "When will I receive my edited photos?",
+    a: "Standard turnaround is 5–7 working days. Rush delivery is available on request. You'll receive a private online gallery link to download your high-resolution images.",
+  },
+  {
+    q: "Do you travel for shoots?",
+    a: "Yes! Ash is based in Churchgate, Mumbai, but regularly travels across Maharashtra and beyond. Destination shoots — honeymoons, destination weddings — are available; inquire for travel pricing.",
+  },
+  {
+    q: "What should I wear or bring?",
+    a: "We'll send you a personalised prep guide after booking. Generally — wear what makes you feel confident, keep outfits simple, and avoid busy patterns that distract from faces.",
+  },
+  {
+    q: "How many photos will I receive?",
+    a: "Edited deliverables vary by package — typically 50–100 for a standard session, 300–500+ for full wedding coverage. All delivered as high-resolution digital files.",
+  },
+  {
+    q: "Do you offer packages or is everything custom priced?",
+    a: "We offer both. Standard packages are listed under our Services. For custom or multi-event requirements, contact us directly for a tailored quote.",
+  },
+  {
+    q: "Can I request specific shots or a style?",
+    a: "Absolutely. Share inspiration images or a mood board when you get in touch — Ash will incorporate your references while bringing his own creative eye to the session.",
+  },
+];
+---
+
+<Layout
+  title="AshPhotoStudio — Professional Photography in Mumbai"
+  description="AshPhotoStudio by Ash Paul — professional photography for weddings, honeymoons, families, babies, pets & architecture in Mumbai. Book via WhatsApp."
+>
+  <Header />
+
+  <main>
+    <!-- ── HERO ──────────────────────────────────────────────── -->
+    <section class="hero" aria-label="Hero">
+      <!-- Crossfade background images -->
+      <div class="hero-bg">
+        <img
+          class="hero-img hero-img-1"
+          src="https://i.pinimg.com/1200x/d9/36/9c/d9369ca02e1853f87be6b7845559b81d.jpg"
+          alt=""
+          aria-hidden="true"
+          fetchpriority="high"
+        />
+        <img
+          class="hero-img hero-img-2"
+          src="https://i.pinimg.com/736x/9a/c9/28/9ac928b223973d40542a98aea605d134.jpg"
+          alt=""
+          aria-hidden="true"
+        />
+        <div class="hero-overlay"></div>
+      </div>
+
+      <!-- Hero content -->
+      <div class="hero-content">
+        <h1 class="hero-headline font-display">
+          Capturing your moments
+        </h1>
+        <p class="hero-sub">
+          The <em>best</em> photo studio in Mumbai!
+        </p>
+        <div class="hero-ctas">
+          <a href="/contact" class="btn-primary">Book a Session &rarr;</a>
+          <a href="/gallery" class="btn-secondary">View Gallery</a>
+        </div>
+      </div>
+
+      <!-- Scroll hint -->
+      <div class="scroll-hint" aria-hidden="true">
+        <span>Scroll</span>
+        <div class="scroll-line"></div>
+      </div>
+    </section>
+
+    <!-- ── ABOUT ME ───────────────────────────────────────────── -->
+    <section class="about" id="about" aria-label="About Ash Paul">
+      <div class="about-inner">
+        <!-- Left: text content -->
+        <div class="about-text">
+          <p class="section-eyebrow">The Photographer</p>
+          <h2 class="about-heading font-display">ABOUT ME</h2>
+
+          <div class="about-cols">
+            <div class="about-col">
+              <h3 class="about-col-title">ABOUT ME</h3>
+              <p>
+                Hi! I'm Ash, a passionate photographer from India. I have developed my
+                photography skills from a young age as I have always been fond of cameras!
+                I have a natural talent when it comes to photography —{" "}
+                <a href="/gallery" class="inline-link">view some of my works here</a>.
+              </p>
+            </div>
+
+            <div class="about-col">
+              <h3 class="about-col-title">ABOUT MY WORK</h3>
+              <p>
+                Every session begins with a conversation. I focus on understanding what you
+                want to feel when you look back at your photos — then I create images that
+                carry that emotion naturally. From golden-hour portraits to candid family
+                chaos, I bring the same careful eye and genuine care to every shoot.
+              </p>
+            </div>
+          </div>
+
+          <div class="experience-stat">
+            <span>5 years of professional experience</span>
+          </div>
+
+          <a href="/contact" class="btn-primary" style="margin-top:2rem;display:inline-block;">
+            Work with Ash &rarr;
+          </a>
+        </div>
+
+        <!-- Right: portrait photo -->
+        <div class="about-portrait-wrap">
+          <div class="about-vertical-label" aria-hidden="true">PHOTOGRAPHER — ASH</div>
+          <img
+            class="about-portrait"
+            src="https://i.pinimg.com/1200x/cb/f9/58/cbf958a59f2950ad7bc211ce50961166.jpg"
+            alt="Ash Paul — photographer"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- ── MY WORKS (Services) ────────────────────────────────── -->
+    <section class="works" id="services" aria-label="Services">
+      <div class="section-inner">
+        <div class="section-header">
+          <p class="section-eyebrow">What I Do</p>
+          <h2 class="section-title font-display">MY WORKS</h2>
+        </div>
+
+        <div class="services-grid" id="services-grid">
+          {services.map((svc, i) => (
+            <div class="service-card glass-panel" data-index={i}>
+              <button class="service-header" aria-expanded="false">
+                <span class="service-number font-display">{String(i + 1).padStart(2, "0")}</span>
+                <span class="service-title">{svc.title}</span>
+                <span class="service-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                  </svg>
+                </span>
+              </button>
+              <div class="accordion-body">
+                <div class="accordion-inner">
+                  <p class="service-desc">{svc.description}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ── FAQ ───────────────────────────────────────────────── -->
+    <section class="faq" id="faq" aria-label="Frequently Asked Questions">
+      <div class="section-inner">
+        <div class="section-header">
+          <p class="section-eyebrow">Got questions?</p>
+          <h2 class="section-title font-display">FREQUENTLY ASKED QUESTIONS</h2>
+        </div>
+
+        <div class="faq-list" id="faq-list">
+          {faqs.map((item, i) => (
+            <div class="faq-item" data-index={i}>
+              <button class="faq-question" aria-expanded="false">
+                <span>{item.q}</span>
+                <span class="faq-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                  </svg>
+                </span>
+              </button>
+              <div class="accordion-body">
+                <div class="accordion-inner">
+                  <p class="faq-answer">{item.a}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div class="faq-cta">
+          <p>Still have questions?</p>
+          <a href="/contact" class="btn-primary">Ask Ash directly &rarr;</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  /* ── Shared section styles ─────────────────────────────────── */
+  .section-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 5rem 2rem;
+  }
+
+  .section-header {
+    margin-bottom: 3rem;
+  }
+
+  .section-eyebrow {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #a0a0a0;
+    margin-bottom: 0.5rem;
+  }
+
+  .section-title {
+    font-size: clamp(2rem, 4vw, 3.25rem);
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: -0.01em;
+    line-height: 1;
+  }
+
+  /* ── Buttons ───────────────────────────────────────────────── */
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.875rem 2rem;
+    background: #ffffff;
+    color: #000000;
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    border: 1px solid #ffffff;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .btn-primary:hover {
+    background: #e0e0e0;
+    border-color: #e0e0e0;
+  }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.875rem 2rem;
+    background: transparent;
+    color: #ffffff;
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    border: 1px solid #555;
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .btn-secondary:hover {
+    border-color: #ffffff;
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  .inline-link {
+    color: #e0e0e0;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  /* ── Hero ──────────────────────────────────────────────────── */
+  .hero {
+    position: relative;
+    height: 100vh;
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+  }
+
+  .hero-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.55) 0%,
+      rgba(0, 0, 0, 0.35) 50%,
+      rgba(10, 10, 10, 0.85) 100%
+    );
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 860px;
+    padding: 0 2rem;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #a0a0a0;
+    margin-bottom: 1.25rem;
+  }
+
+  .hero-headline {
+    font-size: clamp(2.8rem, 6vw, 5.25rem);
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.25rem;
+  }
+
+  .hero-sub {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    color: #c8c8c8;
+    margin-bottom: 2.5rem;
+    line-height: 1.6;
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    z-index: 2;
+  }
+
+  .scroll-hint span {
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #555;
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 48px;
+    background: linear-gradient(to bottom, #555, transparent);
+    animation: scroll-pulse 1.8s ease-in-out infinite;
+  }
+
+  @keyframes scroll-pulse {
+    0%, 100% { opacity: 0.3; transform: scaleY(1); }
+    50%       { opacity: 1;   transform: scaleY(1.2); }
+  }
+
+  /* ── About Me ──────────────────────────────────────────────── */
+  .about {
+    padding: 5rem 0;
+    border-top: 1px solid #2a2a2a;
+    overflow: hidden;
+  }
+
+  .about-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    gap: 4rem;
+    align-items: stretch;
+  }
+
+  .about-text {
+    padding: 2rem 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .about-heading {
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    margin-bottom: 2.5rem;
+  }
+
+  .about-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .about-col-title {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #a0a0a0;
+    margin-bottom: 0.875rem;
+    padding-bottom: 0.625rem;
+    border-bottom: 1px solid #2a2a2a;
+  }
+
+  .about-col p {
+    font-size: 0.9375rem;
+    color: #c8c8c8;
+    line-height: 1.75;
+  }
+
+  .experience-stat {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    padding: 1.25rem 1.5rem;
+    border: 1px solid #2a2a2a;
+    background: #111111;
+    margin-top: auto;
+  }
+
+  .experience-stat span {
+    font-size: 0.875rem;
+    color: #a0a0a0;
+    font-weight: 500;
+  }
+
+  .stat-dot {
+    color: #333;
+  }
+
+  /* Portrait */
+  .about-portrait-wrap {
+    position: relative;
+    align-self: stretch;
+  }
+
+  .about-portrait {
+    width: 100%;
+    height: 100%;
+    min-height: 500px;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+    border: 1px solid #2a2a2a;
+  }
+
+  .about-vertical-label {
+    position: absolute;
+    right: -1.5rem;
+    top: 50%;
+    transform: translateY(-50%) rotate(90deg);
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: #333;
+    white-space: nowrap;
+    pointer-events: none;
+  }
+
+  /* ── My Works ──────────────────────────────────────────────── */
+  .works {
+    border-top: 1px solid #2a2a2a;
+    background: #111111;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: #2a2a2a;
+    border: 1px solid #2a2a2a;
+  }
+
+  .service-card {
+    background: #111111;
+    transition: background 0.2s;
+  }
+
+  .service-card:hover {
+    background: #141414;
+  }
+
+  .service-header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem 1.25rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    color: #ffffff;
+  }
+
+  .service-number {
+    font-size: 0.8rem;
+    color: #333;
+    font-weight: 700;
+    flex-shrink: 0;
+    min-width: 1.5rem;
+  }
+
+  .service-title {
+    flex: 1;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: #ffffff;
+    letter-spacing: 0.01em;
+  }
+
+  .service-icon {
+    flex-shrink: 0;
+    transition: transform 0.35s;
+    color: #555;
+  }
+
+  .service-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .service-card.open .service-icon {
+    transform: rotate(-180deg);
+    color: #a0a0a0;
+  }
+
+  .service-desc {
+    padding: 0 1.25rem 1.5rem;
+    font-size: 0.875rem;
+    color: #a0a0a0;
+    line-height: 1.75;
+  }
+
+  /* ── FAQ ───────────────────────────────────────────────────── */
+  .faq {
+    border-top: 1px solid #2a2a2a;
+  }
+
+  .faq-list {
+    border: 1px solid #2a2a2a;
+    margin-bottom: 3rem;
+  }
+
+  .faq-item {
+    border-bottom: 1px solid #2a2a2a;
+  }
+
+  .faq-item:last-child {
+    border-bottom: none;
+  }
+
+  .faq-question {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.375rem 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    color: #ffffff;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    transition: background 0.2s;
+  }
+
+  .faq-question:hover {
+    background: #111111;
+  }
+
+  .faq-item.open .faq-question {
+    color: #ffffff;
+    background: #111111;
+  }
+
+  .faq-icon {
+    flex-shrink: 0;
+    transition: transform 0.35s;
+    color: #555;
+  }
+
+  .faq-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .faq-item.open .faq-icon {
+    transform: rotate(-180deg);
+  }
+
+  .faq-answer {
+    padding: 0 1.5rem 1.5rem;
+    font-size: 0.875rem;
+    color: #a0a0a0;
+    line-height: 1.8;
+  }
+
+  .faq-cta {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .faq-cta p {
+    font-size: 1rem;
+    color: #a0a0a0;
+  }
+
+  /* ── Responsive ────────────────────────────────────────────── */
+  @media (max-width: 1000px) {
+    .about-inner {
+      grid-template-columns: 1fr;
+    }
+
+    .about-portrait-wrap {
+      max-height: 500px;
+    }
+
+    .about-portrait {
+      min-height: 400px;
+    }
+
+    .about-vertical-label {
+      display: none;
+    }
+
+    .services-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .about-cols {
+      grid-template-columns: 1fr;
+    }
+
+    .services-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .hero-ctas {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .section-inner {
+      padding: 3.5rem 1rem;
+    }
+
+    .about-inner {
+      padding: 0 1rem;
+    }
+  }
+</style>
+
+<script>
+  // ── Services accordion ─────────────────────────────────────
+  document.querySelectorAll<HTMLElement>(".service-card").forEach(card => {
+    const btn = card.querySelector<HTMLButtonElement>(".service-header");
+    const body = card.querySelector<HTMLElement>(".accordion-body");
+
+    btn?.addEventListener("click", () => {
+      const isOpen = card.classList.toggle("open");
+      btn.setAttribute("aria-expanded", String(isOpen));
+      if (body) {
+        body.classList.toggle("open", isOpen);
+      }
+    });
+  });
+
+  // ── FAQ accordion ──────────────────────────────────────────
+  document.querySelectorAll<HTMLElement>(".faq-item").forEach(item => {
+    const btn = item.querySelector<HTMLButtonElement>(".faq-question");
+    const body = item.querySelector<HTMLElement>(".accordion-body");
+
+    btn?.addEventListener("click", () => {
+      const isOpen = item.classList.toggle("open");
+      btn.setAttribute("aria-expanded", String(isOpen));
+      if (body) {
+        body.classList.toggle("open", isOpen);
+      }
+    });
+  });
+</script>

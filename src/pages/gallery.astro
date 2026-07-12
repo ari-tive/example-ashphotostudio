@@ -1,0 +1,387 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+const categories = [
+  {
+    label: "WEDDING",
+    direction: "left",
+    images: [
+      "https://i.pinimg.com/1200x/41/8d/ec/418decab3e5047d4d8b22588d2402ba7.jpg",
+      "https://i.pinimg.com/1200x/91/c6/7a/91c67a2679beb90419bd7004b958a793.jpg",
+      "https://i.pinimg.com/736x/17/76/1f/17761f22cc1ebdd044488ed110287502.jpg",
+      "https://i.pinimg.com/1200x/a5/44/b8/a544b86495d0ef5c81f479dc14d05517.jpg",
+      "https://i.pinimg.com/1200x/39/30/b3/3930b3176d8769a9eb45faa8ad515da7.jpg",
+      "https://i.pinimg.com/736x/83/09/0a/83090af8fd46f56839ed84a852f7c9b8.jpg",
+      "https://i.pinimg.com/736x/98/9a/20/989a2062f2fa3a18d7d5026fe650e398.jpg",
+      "https://i.pinimg.com/736x/03/ab/81/03ab81ee51776259ac31113260e7f639.jpg",
+      "https://i.pinimg.com/736x/0d/71/b3/0d71b3adde5e9443005f094bb76b42f2.jpg",
+      "https://i.pinimg.com/736x/0e/3c/b7/0e3cb7ef43bd76244fc50109ea05d263.jpg",
+      "https://i.pinimg.com/736x/e2/bf/3d/e2bf3d6020b1ff1da5d57d28c6df2e17.jpg",
+      "https://i.pinimg.com/736x/81/35/77/81357784b35e1231c9066825f0ccf258.jpg",
+    ],
+  },
+  {
+    label: "HONEYMOON",
+    direction: "right",
+    images: [
+      "https://i.pinimg.com/736x/d3/60/9b/d3609b009b9cf68b54e2e29534f26f54.jpg",
+      "https://i.pinimg.com/736x/88/8a/f1/888af1c8743f10ca8bd932c512a2c27d.jpg",
+      "https://i.pinimg.com/1200x/2d/ed/45/2ded45cdc70c36ae8ddffce2bb246479.jpg",
+      "https://i.pinimg.com/736x/96/f9/cc/96f9ccc430ab081c1bca10396f73245f.jpg",
+      "https://i.pinimg.com/736x/eb/8f/9b/eb8f9bbf76730c57e2251ab69c9f6ea2.jpg",
+      "https://i.pinimg.com/1200x/b1/3c/9d/b13c9dc7ce6a46977e482d3ac751e334.jpg",
+      "https://i.pinimg.com/736x/00/4e/79/004e796d42cc4b76b801d53201784a0a.jpg",
+      "https://i.pinimg.com/736x/fa/83/12/fa83128509e75680a0611f2924a63f0a.jpg",
+      "https://i.pinimg.com/736x/07/c1/15/07c115d5b83da940688b36d02926cfed.jpg",
+      "https://i.pinimg.com/736x/6a/be/4d/6abe4d636843b0e1d9d4a54ff4b8232a.jpg",
+      "https://i.pinimg.com/736x/78/95/c2/7895c288e2ae82f3345adcd763c5b1b1.jpg",
+      "https://i.pinimg.com/736x/87/e9/7a/87e97aa08db3cce21728198c6436a8a9.jpg",
+      "https://i.pinimg.com/736x/e8/03/2c/e8032c5042c3935c4338d34e673862fa.jpg",
+      "https://i.pinimg.com/736x/16/01/21/1601210956ffeb785f6f393ebf788e47.jpg",
+      "https://i.pinimg.com/1200x/05/2c/fd/052cfdc6fb8d5a22a7bd08dd776510b5.jpg",
+      "https://i.pinimg.com/1200x/03/24/56/032456b2c772aa03c8f476b94fae9a75.jpg",
+    ],
+  },
+  {
+    label: "PETS",
+    direction: "left",
+    images: [
+      "https://i.pinimg.com/1200x/dc/1f/ae/dc1fae59bc01819c582036cfe33e6cf3.jpg",
+      "https://i.pinimg.com/736x/d5/3b/59/d53b5959f7371e58e2317f61d7971a61.jpg",
+      "https://i.pinimg.com/1200x/84/2e/45/842e451269dc5457a0092e1e49012f9c.jpg",
+      "https://i.pinimg.com/1200x/9e/df/9b/9edf9b6c85ec664ea6da30d59993faa5.jpg",
+      "https://i.pinimg.com/736x/fb/84/60/fb8460eb432a12f8b2a52155deb2e1cd.jpg",
+      "https://i.pinimg.com/1200x/25/74/12/2574128773702926c0c1901d4ad7e7c3.jpg",
+      "https://i.pinimg.com/736x/43/5d/a7/435da763975e0c441b51d894acb31a40.jpg",
+      "https://i.pinimg.com/736x/6b/8e/30/6b8e306fcf30307013acc7b7104830dc.jpg",
+      "https://i.pinimg.com/736x/cd/be/30/cdbe30f23ba6fe2df5c138b2f0defcd9.jpg",
+      "https://i.pinimg.com/736x/f5/f7/20/f5f7205402d6f5b42df26815ecb8fa71.jpg",
+      "https://i.pinimg.com/736x/7e/d2/74/7ed2745246474b36d834f6b3aa86c8dc.jpg",
+      "https://i.pinimg.com/1200x/37/23/bc/3723bce296638efc8c46232c6197ff1f.jpg",
+      "https://i.pinimg.com/1200x/97/cc/55/97cc552909cb12aa53f62223d54a81ce.jpg",
+      "https://i.pinimg.com/1200x/72/79/8b/72798be457a90a53856bfd5426ee404c.jpg",
+      "https://i.pinimg.com/1200x/b5/0b/df/b50bdfbfcaf610540bc85aaff7c33104.jpg",
+      "https://i.pinimg.com/1200x/2e/56/d8/2e56d8c2b74392cabdfab7e035a65c41.jpg",
+      "https://i.pinimg.com/1200x/a5/ee/d6/a5eed63c5faa224e178e9ebcf53ebb2e.jpg",
+    ],
+  },
+  {
+    label: "ARCHITECTURE & INTERIORS",
+    direction: "right",
+    images: [
+      "https://i.pinimg.com/736x/56/9e/45/569e45d158cbc48e4bf4bba74cb20658.jpg",
+      "https://i.pinimg.com/736x/b3/a7/e4/b3a7e498f7c9d9db8449be9fd08f3e6d.jpg",
+      "https://i.pinimg.com/1200x/8a/0c/9e/8a0c9eeb175892782b9064ec312ec239.jpg",
+      "https://i.pinimg.com/736x/bd/b9/2d/bdb92d04250b48e028178add5b2c0c62.jpg",
+      "https://i.pinimg.com/736x/d6/3c/27/d63c27f0fd92fa6c7319dbb67a88cd32.jpg",
+      "https://i.pinimg.com/1200x/db/bd/e9/dbbde9f3db8f29ec0c79eaf79e6eed26.jpg",
+      "https://i.pinimg.com/736x/47/f6/40/47f64097d37329493a7057e9be0229d3.jpg",
+      "https://i.pinimg.com/736x/e7/85/f8/e785f878577dd5d05cd455bf773ca5f2.jpg",
+      "https://i.pinimg.com/736x/ca/85/9f/ca859f3ed70ec1e3d2b83ac3d8cd80d6.jpg",
+      "https://i.pinimg.com/236x/c0/c4/9b/c0c49bfd22514d8601607e5cbacb2e2e.jpg",
+      "https://i.pinimg.com/1200x/ac/e3/2b/ace32be8a64cc24f0b276059adfb86b3.jpg",
+      "https://i.pinimg.com/736x/48/42/75/484275648acfc54a5a14cfca329b155d.jpg",
+      "https://i.pinimg.com/1200x/d5/41/99/d54199753ee3d7f785b628d6f6ec7d44.jpg",
+      "https://i.pinimg.com/736x/61/ff/c0/61ffc0dd66757f00f0c53ba5360b3073.jpg",
+      "https://i.pinimg.com/1200x/a4/ba/1a/a4ba1a21c13e3d09d3ddb94aeb2ef142.jpg",
+      "https://i.pinimg.com/1200x/1e/26/92/1e26921a9d4236c8d6382c2ecd810d18.jpg",
+      "https://i.pinimg.com/1200x/38/6f/10/386f108a76a456ea841ef4af36c861cd.jpg",
+    ],
+  },
+];
+---
+
+<Layout
+  title="Gallery — AshPhotoStudio"
+  description="Browse Ash Paul's photography portfolio — weddings, honeymoons, pets, and architecture shoots in Mumbai and across India."
+>
+  <Header />
+
+  <main class="gallery-page">
+    <!-- Page heading -->
+    <div class="gallery-hero">
+      <p class="section-eyebrow">Portfolio</p>
+      <h1 class="gallery-title font-display">GALLERY</h1>
+      <p class="gallery-sub">
+        A selection of work across weddings, honeymoons, pets, and architecture.
+        Click any image to view full size.
+      </p>
+    </div>
+
+    <!-- Carousel rows -->
+    {categories.map((cat, catIdx) => (
+      <div class="category-row">
+        <div class="category-label-wrap">
+          <span class="category-label">{cat.label}</span>
+          <div class="category-line"></div>
+        </div>
+
+        <div class="carousel-wrapper" data-direction={cat.direction}>
+          <!-- Track: images duplicated for seamless loop -->
+          <div class={`carousel-track dir-${cat.direction}`} data-cat={catIdx}>
+            {[...cat.images, ...cat.images].map((src, imgIdx) => (
+              <button
+                class="carousel-img-btn"
+                aria-label={`View ${cat.label} photo ${(imgIdx % cat.images.length) + 1}`}
+                data-src={src}
+                data-cat-label={cat.label}
+              >
+                <img
+                  src={src}
+                  alt={`${cat.label} photography by Ash Paul`}
+                  loading="lazy"
+                  height="320"
+                />
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+    ))}
+  </main>
+
+  <!-- Lightbox -->
+  <div id="lightbox" role="dialog" aria-modal="true" aria-label="Photo lightbox">
+    <button id="lightbox-close" aria-label="Close lightbox">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+    <img id="lightbox-img" src="" alt="Full size photo" />
+  </div>
+
+  <Footer />
+</Layout>
+
+<style>
+  .gallery-page {
+    padding-top: 68px; /* header height */
+  }
+
+  /* Page hero */
+  .gallery-hero {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 4rem 2rem 3rem;
+  }
+
+  .section-eyebrow {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #a0a0a0;
+    margin-bottom: 0.5rem;
+  }
+
+  .gallery-title {
+    font-size: clamp(3rem, 6vw, 5rem);
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+  }
+
+  .gallery-sub {
+    font-size: 1rem;
+    color: #a0a0a0;
+    max-width: 560px;
+    line-height: 1.7;
+  }
+
+  /* Category rows */
+  .category-row {
+    margin-bottom: 3.5rem;
+  }
+
+  .category-label-wrap {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .category-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #ffffff;
+    white-space: nowrap;
+  }
+
+  .category-line {
+    flex: 1;
+    height: 1px;
+    background: #2a2a2a;
+  }
+
+  /* Carousel container */
+  .carousel-wrapper {
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+  }
+
+  /* Gradient fade edges */
+  .carousel-wrapper::before,
+  .carousel-wrapper::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 80px;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .carousel-wrapper::before {
+    left: 0;
+    background: linear-gradient(to right, #0a0a0a, transparent);
+  }
+
+  .carousel-wrapper::after {
+    right: 0;
+    background: linear-gradient(to left, #0a0a0a, transparent);
+  }
+
+  /* Carousel track: set in global.css — just sizing here */
+  .carousel-track {
+    gap: 0.625rem;
+  }
+
+  .carousel-img-btn {
+    display: block;
+    flex-shrink: 0;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    overflow: hidden;
+    height: 280px;
+  }
+
+  .carousel-img-btn img {
+    height: 280px;
+    width: auto;
+    display: block;
+    object-fit: cover;
+    transition: transform 0.4s ease, filter 0.3s ease;
+    border: 1px solid #1a1a1a;
+  }
+
+  .carousel-img-btn:hover img {
+    transform: scale(1.04);
+    filter: brightness(1.1);
+  }
+
+  /* Lightbox */
+  #lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.94);
+    z-index: 9999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #lightbox.open {
+    display: flex;
+  }
+
+  #lightbox img {
+    max-width: 90vw;
+    max-height: 90vh;
+    object-fit: contain;
+    border: 1px solid #2a2a2a;
+  }
+
+  #lightbox-close {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.25rem;
+    width: 44px;
+    height: 44px;
+    background: #1a1a1a;
+    border: 1px solid #2a2a2a;
+    cursor: pointer;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+  }
+
+  #lightbox-close:hover {
+    background: #2a2a2a;
+  }
+
+  #lightbox-close svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  @media (max-width: 640px) {
+    .gallery-hero {
+      padding: 2.5rem 1rem 2rem;
+    }
+
+    .category-label-wrap {
+      padding: 0 1rem;
+    }
+
+    .carousel-img-btn,
+    .carousel-img-btn img {
+      height: 200px;
+    }
+  }
+</style>
+
+<script>
+  // ── Lightbox ───────────────────────────────────────────────
+  const lightbox = document.getElementById("lightbox") as HTMLDivElement;
+  const lightboxImg = document.getElementById("lightbox-img") as HTMLImageElement;
+  const closeBtn = document.getElementById("lightbox-close");
+
+  function openLightbox(src: string, alt: string) {
+    lightboxImg.src = src;
+    lightboxImg.alt = alt;
+    lightbox.classList.add("open");
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove("open");
+    document.body.style.overflow = "";
+    // Clear src after transition
+    setTimeout(() => { lightboxImg.src = ""; }, 200);
+  }
+
+  // Open on image click
+  document.querySelectorAll<HTMLButtonElement>(".carousel-img-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const src = btn.dataset.src ?? "";
+      const label = btn.dataset.catLabel ?? "Photo";
+      openLightbox(src, `${label} photography by Ash Paul`);
+    });
+  });
+
+  // Close handlers
+  closeBtn?.addEventListener("click", closeLightbox);
+
+  lightbox.addEventListener("click", (e) => {
+    if (e.target === lightbox) closeLightbox();
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeLightbox();
+  });
+</script>

@@ -1,0 +1,193 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Bebas Neue", "Anton", Impact, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+
+  --color-bg: #0a0a0a;
+  --color-surface: #111111;
+  --color-elevated: #1a1a1a;
+  --color-border: #2a2a2a;
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #a0a0a0;
+  --color-accent: #e0e0e0;
+}
+
+/* ─── Reset ─────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  border-radius: 0 !important;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #0a0a0a;
+  color: #ffffff;
+  font-family: "Inter", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Typography ─────────────────────────────────────────────── */
+.font-display {
+  font-family: "Bebas Neue", "Anton", Impact, sans-serif;
+  letter-spacing: 0.03em;
+}
+
+/* ─── Glass Panel ────────────────────────────────────────────── */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.025);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-left: 1px solid rgba(255, 255, 255, 0.07);
+  border-right: 1px solid rgba(255, 255, 255, 0.03);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+/* ─── Hero Crossfade ─────────────────────────────────────────── */
+@keyframes crossfade-in {
+  0%,  45% { opacity: 1; }
+  55%, 100% { opacity: 0; }
+}
+
+.hero-img-1 {
+  animation: crossfade-in 10s ease-in-out infinite;
+}
+
+.hero-img-2 {
+  animation: crossfade-in 10s ease-in-out infinite;
+  animation-delay: 5s;
+}
+
+/* ─── Infinite Carousel ──────────────────────────────────────── */
+@keyframes scroll-left {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@keyframes scroll-right {
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(0); }
+}
+
+.carousel-track {
+  display: flex;
+  width: max-content;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.carousel-track.dir-left {
+  animation: scroll-left 40s linear infinite;
+}
+
+.carousel-track.dir-right {
+  animation: scroll-right 40s linear infinite;
+}
+
+.carousel-wrapper:hover .carousel-track {
+  animation-play-state: paused;
+}
+
+/* ─── Accordion ──────────────────────────────────────────────── */
+.accordion-body {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.35s ease;
+}
+
+.accordion-body.open {
+  grid-template-rows: 1fr;
+}
+
+.accordion-inner {
+  overflow: hidden;
+}
+
+/* ─── Before/After Slider ────────────────────────────────────── */
+.compare-slider {
+  position: relative;
+  overflow: hidden;
+  cursor: col-resize;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.compare-after {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.compare-divider {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: #fff;
+  transform: translateX(-50%);
+  z-index: 10;
+  pointer-events: none;
+}
+
+.compare-handle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 44px;
+  height: 44px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 11;
+  cursor: col-resize;
+  pointer-events: all;
+}
+
+.compare-label {
+  position: absolute;
+  top: 1rem;
+  padding: 0.25rem 0.625rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #000;
+  background: #fff;
+  z-index: 12;
+  pointer-events: none;
+}
+
+/* ─── Lightbox ───────────────────────────────────────────────── */
+#lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.92);
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+}
+
+#lightbox.open {
+  display: flex;
+}
+
+#lightbox img {
+  max-width: 90vw;
+  max-height: 90vh;
+  object-fit: contain;
+}
+
+/* ─── Stars ──────────────────────────────────────────────────── */
+.stars {
+  color: #f4c430;
+  letter-spacing: 0.05em;
+}

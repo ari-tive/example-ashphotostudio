@@ -1,0 +1,235 @@
+---
+const navLinks = [
+  { label: "Home",       href: "/" },
+  { label: "Gallery",    href: "/gallery" },
+  { label: "Compare",    href: "/compare" },
+  { label: "Contact Us", href: "/contact" },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header id="site-header">
+  <div class="header-inner">
+    <!-- Logo -->
+    <a href="/" class="logo" aria-label="AshPhotoStudio home">
+      <img src="/favicon.png" alt="AshPhotoStudio logo" width="36" height="36" />
+      <span class="logo-text font-display">AshPhotoStudio</span>
+    </a>
+
+    <!-- Desktop nav -->
+    <nav class="desktop-nav" aria-label="Main navigation">
+      {navLinks.map(link => (
+        <a
+          href={link.href}
+          class:list={["nav-link", { active: currentPath === link.href || (link.href !== "/" && currentPath.startsWith(link.href)) }]}
+        >
+          {link.label}
+        </a>
+      ))}
+    </nav>
+
+    <!-- Mobile burger -->
+    <button class="burger" id="burger-btn" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+
+  <!-- Mobile nav drawer -->
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation" aria-hidden="true">
+    {navLinks.map(link => (
+      <a
+        href={link.href}
+        class:list={["mobile-nav-link", { active: currentPath === link.href || (link.href !== "/" && currentPath.startsWith(link.href)) }]}
+      >
+        {link.label}
+      </a>
+    ))}
+  </nav>
+</header>
+
+<style>
+  #site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: rgba(10, 10, 10, 0.92);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid #2a2a2a;
+  }
+
+  .header-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    height: 68px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  /* Logo */
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    text-decoration: none;
+    color: #ffffff;
+  }
+
+  .logo img {
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+    border-radius: 0 !important;
+  }
+
+  .logo-text {
+    font-size: 1.25rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+  }
+
+  /* Desktop nav */
+  .desktop-nav {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+  }
+
+  .nav-link {
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #a0a0a0;
+    text-decoration: none;
+    padding-bottom: 2px;
+    border-bottom: 1px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .nav-link:hover,
+  .nav-link.active {
+    color: #ffffff;
+    border-bottom-color: #ffffff;
+  }
+
+  /* Burger button */
+  .burger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+  }
+
+  .burger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: #ffffff;
+    transition: transform 0.3s, opacity 0.3s;
+  }
+
+  .burger.open span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .burger.open span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .burger.open span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  /* Mobile nav */
+  .mobile-nav {
+    display: none;
+    flex-direction: column;
+    background: #111111;
+    border-top: 1px solid #2a2a2a;
+    padding: 0.5rem 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease;
+  }
+
+  .mobile-nav.open {
+    max-height: 300px;
+  }
+
+  .mobile-nav-link {
+    padding: 0.875rem 2rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #a0a0a0;
+    text-decoration: none;
+    border-bottom: 1px solid #1a1a1a;
+    transition: color 0.2s, background 0.2s;
+  }
+
+  .mobile-nav-link:hover,
+  .mobile-nav-link.active {
+    color: #ffffff;
+    background: #1a1a1a;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .desktop-nav {
+      display: none;
+    }
+
+    .burger {
+      display: flex;
+    }
+
+    .mobile-nav {
+      display: flex;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .header-inner {
+      padding: 0 1rem;
+    }
+
+    .logo-text {
+      font-size: 1.1rem;
+    }
+  }
+</style>
+
+<script>
+  const burgerBtn = document.getElementById("burger-btn");
+  const mobileNav = document.getElementById("mobile-nav");
+
+  burgerBtn?.addEventListener("click", () => {
+    const isOpen = mobileNav?.classList.toggle("open");
+    burgerBtn.classList.toggle("open", isOpen);
+    burgerBtn.setAttribute("aria-expanded", String(isOpen));
+    mobileNav?.setAttribute("aria-hidden", String(!isOpen));
+  });
+
+  // Close mobile nav when a link is clicked
+  mobileNav?.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", () => {
+      mobileNav.classList.remove("open");
+      burgerBtn?.classList.remove("open");
+      burgerBtn?.setAttribute("aria-expanded", "false");
+      mobileNav.setAttribute("aria-hidden", "true");
+    });
+  });
+</script>

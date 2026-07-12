@@ -1,0 +1,238 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<Layout
+  title="Privacy Policy — AshPhotoStudio"
+  description="AshPhotoStudio's privacy policy. We do not collect, store, or track any user data. Our contact form only pre-fills a WhatsApp message."
+>
+  <Header />
+
+  <main class="legal-page">
+    <div class="legal-inner">
+      <div class="legal-header">
+        <p class="eyebrow">Legal</p>
+        <h1 class="legal-title font-display">PRIVACY POLICY</h1>
+        <p class="legal-date">Last updated: January 2026</p>
+      </div>
+
+      <div class="legal-body">
+
+        <section class="legal-section">
+          <h2>The Short Version</h2>
+          <p>
+            We don't collect your data. We don't track you. We don't use cookies.
+            This website is a simple, static portfolio site — nothing you do here is
+            stored on our end.
+          </p>
+        </section>
+
+        <section class="legal-section">
+          <h2>Contact Form</h2>
+          <p>
+            The enquiry form on the <a href="/contact">Contact Us</a> page does
+            <strong>not</strong> send data to any server or database operated by
+            AshPhotoStudio. It acts purely as a <strong>message formatter</strong>:
+            when you click "Send on WhatsApp →", your browser constructs a
+            <code>wa.me</code> deep link using the information you typed and opens
+            WhatsApp directly in a new tab — with your message pre-filled. Nothing is
+            transmitted to or stored by us at any point.
+          </p>
+          <p>
+            Any data you share through WhatsApp is governed by
+            <a href="https://www.whatsapp.com/legal/privacy-policy" target="_blank" rel="noopener">
+              WhatsApp's own Privacy Policy
+            </a>.
+          </p>
+        </section>
+
+        <section class="legal-section">
+          <h2>Cookies</h2>
+          <p>
+            This website does <strong>not</strong> use cookies of any kind — no session
+            cookies, no tracking cookies, no analytics cookies. We do not use Google
+            Analytics, Facebook Pixel, or any other third-party tracking script.
+          </p>
+        </section>
+
+        <section class="legal-section">
+          <h2>User Data</h2>
+          <p>
+            We do not collect, store, process, or share any personally identifiable
+            information (PII). There is no user account system, no newsletter, and no
+            mailing list on this website.
+          </p>
+        </section>
+
+        <section class="legal-section">
+          <h2>Third-Party Content</h2>
+          <p>
+            This site loads fonts from Google Fonts and embeds a Google Maps iframe on
+            the Contact page. These third-party services may set their own cookies or
+            collect usage data in accordance with their respective privacy policies.
+            We do not control these services.
+          </p>
+        </section>
+
+        <section class="legal-section">
+          <h2>External Links</h2>
+          <p>
+            This site contains links to external websites (Pinterest, WhatsApp, Google
+            Maps). We are not responsible for the privacy practices of those sites. We
+            encourage you to review their privacy policies independently.
+          </p>
+        </section>
+
+        <section class="legal-section">
+          <h2>Changes to This Policy</h2>
+          <p>
+            If we ever change this policy, the updated version will be posted here with
+            a revised "Last updated" date. Since we don't collect your contact details,
+            we have no way to notify you directly — so feel free to check back any time.
+          </p>
+        </section>
+
+        <section class="legal-section">
+          <h2>Questions?</h2>
+          <p>
+            If you have any questions about this privacy policy, reach out to Ash
+            directly at{" "}
+            <a href="mailto:ashpaul102@email.com">ashpaul102@email.com</a>.
+          </p>
+        </section>
+
+      </div>
+
+      <div class="legal-back">
+        <a href="/contact" class="back-link">&larr; Back to Contact</a>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .legal-page {
+    padding-top: 68px;
+    min-height: 100vh;
+  }
+
+  .legal-inner {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 4rem 2rem 5rem;
+  }
+
+  .legal-header {
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #2a2a2a;
+  }
+
+  .eyebrow {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #a0a0a0;
+    margin-bottom: 0.5rem;
+  }
+
+  .legal-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1;
+    letter-spacing: -0.01em;
+    margin-bottom: 0.75rem;
+  }
+
+  .legal-date {
+    font-size: 0.8rem;
+    color: #555;
+  }
+
+  .legal-body {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .legal-section {
+    padding: 1.75rem;
+    border: 1px solid #2a2a2a;
+    background: #111111;
+  }
+
+  .legal-section h2 {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #ffffff;
+    margin-bottom: 1rem;
+    padding-bottom: 0.625rem;
+    border-bottom: 1px solid #2a2a2a;
+  }
+
+  .legal-section p {
+    font-size: 0.9375rem;
+    color: #a0a0a0;
+    line-height: 1.8;
+    margin-bottom: 0.75rem;
+  }
+
+  .legal-section p:last-child {
+    margin-bottom: 0;
+  }
+
+  .legal-section a {
+    color: #e0e0e0;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color 0.2s;
+  }
+
+  .legal-section a:hover {
+    color: #ffffff;
+  }
+
+  .legal-section strong {
+    color: #e0e0e0;
+    font-weight: 600;
+  }
+
+  .legal-section code {
+    font-family: "Courier New", monospace;
+    font-size: 0.85em;
+    background: #1a1a1a;
+    padding: 0.125em 0.375em;
+    border: 1px solid #2a2a2a;
+    color: #e0e0e0;
+  }
+
+  .legal-back {
+    margin-top: 2.5rem;
+  }
+
+  .back-link {
+    font-size: 0.875rem;
+    color: #555;
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    transition: color 0.2s;
+  }
+
+  .back-link:hover {
+    color: #a0a0a0;
+  }
+
+  @media (max-width: 640px) {
+    .legal-inner {
+      padding: 3rem 1rem 4rem;
+    }
+  }
+</style>

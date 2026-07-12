@@ -1,0 +1,312 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+const pairs = [
+  { before: "/images/b1.png", after: "/images/a1.png" },
+  { before: "/images/b2.png", after: "/images/a2.png" },
+  { before: "/images/b3.png", after: "/images/a3.png" },
+  { before: "/images/b4.png", after: "/images/a4.png" },
+  { before: "/images/b5.png", after: "/images/a5.png" },
+  { before: "/images/b6.png", after: "/images/a6.png" },
+];
+---
+
+<Layout
+  title="Before & After — AshPhotoStudio"
+  description="See the power of professional photo editing — drag the slider to compare before and after retouching by Ash Paul, Mumbai photographer."
+>
+  <Header />
+
+  <main class="compare-page">
+    <!-- Intro -->
+    <div class="compare-hero">
+      <p class="section-eyebrow">The Edit Makes the Image</p>
+      <h1 class="compare-title font-display">BEFORE &amp; AFTER</h1>
+      <p class="compare-sub">
+        Every photo tells a story — but the edit is where that story comes alive. Ash applies
+        careful colour grading, exposure correction, and retouching to bring out the true mood
+        of every image. Drag the slider to see the transformation.
+      </p>
+    </div>
+
+    <!-- Comparison pairs -->
+    <div class="pairs-list">
+      {pairs.map((pair, i) => (
+        <div class="pair-wrap">
+          <span class="pair-number font-display">{String(i + 1).padStart(2, "0")}</span>
+          <div class="compare-slider" data-index={i}>
+            <!-- BEFORE (full width, clipped on right) -->
+            <div class="compare-before">
+              <img src={pair.before} alt={`Before edit — pair ${i + 1}`} loading="lazy" draggable="false" />
+            </div>
+
+            <!-- AFTER (absolute, revealed from left by clip) -->
+            <div class="compare-after">
+              <img src={pair.after} alt={`After edit — pair ${i + 1}`} loading="lazy" draggable="false" />
+            </div>
+
+            <!-- Divider line + handle -->
+            <div class="compare-divider">
+              <div class="compare-handle" aria-hidden="true">
+                <!-- Double arrow SVG -->
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="15 18 9 12 15 6"></polyline>
+                  <polyline points="9 6 15 12 9 18" style="transform: translateX(4px)"></polyline>
+                </svg>
+              </div>
+            </div>
+
+            <!-- Labels -->
+            <span class="compare-label label-before">BEFORE</span>
+            <span class="compare-label label-after">AFTER</span>
+          </div>
+        </div>
+      ))}
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .compare-page {
+    padding-top: 68px;
+  }
+
+  /* Intro */
+  .compare-hero {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 4rem 2rem 3rem;
+    text-align: center;
+  }
+
+  .section-eyebrow {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #a0a0a0;
+    margin-bottom: 0.5rem;
+  }
+
+  .compare-title {
+    font-size: clamp(2.8rem, 6vw, 5rem);
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.25rem;
+  }
+
+  .compare-sub {
+    font-size: 1rem;
+    color: #a0a0a0;
+    line-height: 1.8;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  /* Pairs */
+  .pairs-list {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 2rem 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+  }
+
+  .pair-wrap {
+    position: relative;
+  }
+
+  .pair-number {
+    display: block;
+    font-size: 4rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  /* Slider */
+  .compare-slider {
+    position: relative;
+    overflow: hidden;
+    cursor: col-resize;
+    user-select: none;
+    -webkit-user-select: none;
+    border: 1px solid #2a2a2a;
+    background: #0a0a0a;
+    touch-action: pan-y; /* allow vertical scroll, handle horizontal */
+  }
+
+  /* BEFORE image — sits in normal flow, sets container height */
+  .compare-before {
+    width: 100%;
+    display: block;
+  }
+
+  .compare-before img {
+    width: 100%;
+    height: auto;
+    display: block;
+    pointer-events: none;
+    max-height: 70vh;
+    object-fit: contain;
+  }
+
+  /* AFTER image — full-size overlay, clipped with clip-path */
+  .compare-after {
+    position: absolute;
+    inset: 0;
+    /* clip-path updated by JS: inset(0 0 0 X%) hides the left X%, revealing right portion */
+    clip-path: inset(0 0 0 50%);
+  }
+
+  .compare-after img {
+    /* Must be identical sizing to .compare-before img so images line up */
+    width: 100%;
+    height: auto;
+    display: block;
+    pointer-events: none;
+    max-height: 70vh;
+    object-fit: contain;
+  }
+
+  /* Divider */
+  .compare-divider {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 2px;
+    background: #ffffff;
+    transform: translateX(-50%);
+    z-index: 10;
+    pointer-events: none;
+    transition: none;
+  }
+
+  /* Handle */
+  .compare-handle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 44px;
+    height: 44px;
+    transform: translate(-50%, -50%);
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #0a0a0a;
+    z-index: 11;
+    pointer-events: none;
+  }
+
+  .compare-handle svg {
+    width: 20px;
+    height: 20px;
+    color: #000000;
+    flex-shrink: 0;
+  }
+
+  /* Labels */
+  .compare-label {
+    position: absolute;
+    top: 1rem;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #000000;
+    background: #ffffff;
+    z-index: 9;
+    pointer-events: none;
+  }
+
+  .label-before {
+    left: 1rem;
+  }
+
+  .label-after {
+    right: 1rem;
+  }
+
+  @media (max-width: 640px) {
+    .compare-hero {
+      padding: 2.5rem 1rem 2rem;
+      text-align: left;
+    }
+
+    .pairs-list {
+      padding: 1rem 1rem 3rem;
+      gap: 2.5rem;
+    }
+
+    .pair-number {
+      font-size: 2.5rem;
+    }
+  }
+</style>
+
+<script>
+  // ── Before/After Slider ─────────────────────────────────────
+  document.querySelectorAll<HTMLElement>(".compare-slider").forEach(slider => {
+    const afterEl = slider.querySelector<HTMLElement>(".compare-after");
+    const divider = slider.querySelector<HTMLElement>(".compare-divider");
+
+    if (!afterEl || !divider) return;
+
+    let isDragging = false;
+
+    function setPosition(clientX: number) {
+      const rect = slider.getBoundingClientRect();
+      let pct = (clientX - rect.left) / rect.width;
+      pct = Math.max(0.02, Math.min(0.98, pct));
+      const pctPx = `${(pct * 100).toFixed(2)}%`;
+      // clip-path hides the left portion; divider position = where AFTER starts
+      afterEl!.style.clipPath = `inset(0 0 0 ${(pct * 100).toFixed(2)}%)`;
+      divider!.style.left = pctPx;
+    }
+
+    // Mouse events
+    slider.addEventListener("mousedown", (e) => {
+      isDragging = true;
+      setPosition(e.clientX);
+      e.preventDefault();
+    });
+
+    window.addEventListener("mousemove", (e) => {
+      if (!isDragging) return;
+      setPosition(e.clientX);
+    });
+
+    window.addEventListener("mouseup", () => {
+      isDragging = false;
+    });
+
+    // Touch events
+    slider.addEventListener("touchstart", (e) => {
+      isDragging = true;
+      setPosition(e.touches[0].clientX);
+    }, { passive: true });
+
+    slider.addEventListener("touchmove", (e) => {
+      if (!isDragging) return;
+      setPosition(e.touches[0].clientX);
+      e.preventDefault();
+    }, { passive: false });
+
+    slider.addEventListener("touchend", () => {
+      isDragging = false;
+    });
+  });
+</script>
