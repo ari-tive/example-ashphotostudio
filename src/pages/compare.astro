@@ -257,56 +257,47 @@ const pairs = [
   }
 </style>
 
-<script>
-  // ── Before/After Slider ─────────────────────────────────────
-  document.querySelectorAll<HTMLElement>(".compare-slider").forEach(slider => {
-    const afterEl = slider.querySelector<HTMLElement>(".compare-after");
-    const divider = slider.querySelector<HTMLElement>(".compare-divider");
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll(".compare-slider").forEach(function (slider) {
+      var afterEl = slider.querySelector(".compare-after");
+      var divider = slider.querySelector(".compare-divider");
+      if (!afterEl || !divider) return;
 
-    if (!afterEl || !divider) return;
+      var isDragging = false;
 
-    let isDragging = false;
+      function setPosition(clientX) {
+        var rect = slider.getBoundingClientRect();
+        var pct  = Math.max(0.02, Math.min(0.98, (clientX - rect.left) / rect.width));
+        var pctStr = (pct * 100).toFixed(2) + "%";
+        afterEl.style.clipPath = "inset(0 0 0 " + pctStr + ")";
+        divider.style.left = pctStr;
+      }
 
-    function setPosition(clientX: number) {
-      const rect = slider.getBoundingClientRect();
-      let pct = (clientX - rect.left) / rect.width;
-      pct = Math.max(0.02, Math.min(0.98, pct));
-      const pctPx = `${(pct * 100).toFixed(2)}%`;
-      // clip-path hides the left portion; divider position = where AFTER starts
-      afterEl!.style.clipPath = `inset(0 0 0 ${(pct * 100).toFixed(2)}%)`;
-      divider!.style.left = pctPx;
-    }
+      slider.addEventListener("mousedown", function (e) {
+        isDragging = true;
+        setPosition(e.clientX);
+        e.preventDefault();
+      });
 
-    // Mouse events
-    slider.addEventListener("mousedown", (e) => {
-      isDragging = true;
-      setPosition(e.clientX);
-      e.preventDefault();
-    });
+      window.addEventListener("mousemove", function (e) {
+        if (isDragging) setPosition(e.clientX);
+      });
 
-    window.addEventListener("mousemove", (e) => {
-      if (!isDragging) return;
-      setPosition(e.clientX);
-    });
+      window.addEventListener("mouseup", function () {
+        isDragging = false;
+      });
 
-    window.addEventListener("mouseup", () => {
-      isDragging = false;
-    });
+      slider.addEventListener("touchstart", function (e) {
+        isDragging = true;
+        setPosition(e.touches[0].clientX);
+      }, { passive: true });
 
-    // Touch events
-    slider.addEventListener("touchstart", (e) => {
-      isDragging = true;
-      setPosition(e.touches[0].clientX);
-    }, { passive: true });
+      slider.addEventListener("touchmove", function (e) {
+        if (isDragging) { setPosition(e.touches[0].clientX); e.preventDefault(); }
+      }, { passive: false });
 
-    slider.addEventListener("touchmove", (e) => {
-      if (!isDragging) return;
-      setPosition(e.touches[0].clientX);
-      e.preventDefault();
-    }, { passive: false });
-
-    slider.addEventListener("touchend", () => {
-      isDragging = false;
+      slider.addEventListener("touchend", function () { isDragging = false; });
     });
   });
 </script>

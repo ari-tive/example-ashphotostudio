@@ -1,0 +1,167 @@
+---
+const TARGET = '.cursor-target';
+const SPIN_DURATION = 2;
+const HOVER_DURATION = 0.2;
+---
+
+<div id="tc-wrap">
+  <div id="tc-dot"></div>
+  <div class="tc-corner tc-tl"></div>
+  <div class="tc-corner tc-tr"></div>
+  <div class="tc-corner tc-br"></div>
+  <div class="tc-corner tc-bl"></div>
+</div>
+
+<style>
+  #tc-wrap {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+    z-index: 99999;
+    will-change: transform;
+  }
+
+  #tc-dot {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: #fff;
+    border-radius: 50% !important;
+    transform: translate(-50%, -50%);
+  }
+
+  .tc-corner {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border: 2px solid #fff;
+  }
+
+  .tc-tl { border-right: none; border-bottom: none; transform: translate(-18px, -18px); }
+  .tc-tr { border-left:  none; border-bottom: none; transform: translate(6px,  -18px); }
+  .tc-br { border-left:  none; border-top:    none; transform: translate(6px,    6px); }
+  .tc-bl { border-right: none; border-top:    none; transform: translate(-18px,  6px); }
+</style>
+
+<script is:inline>
+(function () {
+  // Skip touch/mobile
+  var ua = navigator.userAgent;
+  if (('ontouchstart' in window && window.innerWidth <= 768) ||
+      /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(ua)) return;
+
+  var TARGET = '.cursor-target';
+  var SPIN   = 2;
+  var HOVER  = 0.2;
+
+  // Wait for GSAP to be available (it's loaded in <head> before this)
+  function init() {
+    var gsap = window.gsap;
+    if (!gsap) { setTimeout(init, 50); return; }
+
+    var wrap    = document.getElementById('tc-wrap');
+    var dot     = document.getElementById('tc-dot');
+    var corners = Array.from(document.querySelectorAll('.tc-corner'));
+    if (!wrap || !dot) return;
+
+    // Hide system cursor
+    document.documentElement.style.cursor = 'none';
+
+    // Center on load
+    gsap.set(wrap, { x: window.innerWidth / 2, y: window.innerHeight / 2 });
+
+    // Spin
+    var spinTl = gsap.timeline({ repeat: -1 })
+      .to(wrap, { rotation: '+=360', duration: SPIN, ease: 'none' });
+
+    // Track mouse
+    document.addEventListener('mousemove', function (e) {
+      gsap.to(wrap, { x: e.clientX, y: e.clientY, duration: 0.12, ease: 'power3.out', overwrite: true });
+    });
+
+    // Click squeeze
+    document.addEventListener('mousedown', function () {
+      gsap.to(wrap, { scale: 0.85, duration: 0.12 });
+    });
+    document.addEventListener('mouseup', function () {
+      gsap.to(wrap, { scale: 1, duration: 0.2 });
+    });
+
+    // Corner bracket positions (relative to wrap origin = cursor position)
+    var B = 3, C = 12;
+    var REST = [
+      { x: -(C + B), y: -(C + B) },
+      { x:       B,  y: -(C + B) },
+      { x:       B,  y:       B  },
+      { x: -(C + B), y:       B  },
+    ];
+
+    function resetCorners() {
+      corners.forEach(function (c, i) {
+        gsap.to(c, { x: REST[i].x, y: REST[i].y, duration: 0.35, ease: 'power3.out', overwrite: true });
+      });
+    }
+
+    var activeTarget = null;
+    var resumeTimer  = null;
+
+    function resumeSpin() {
+      resumeTimer = setTimeout(function () {
+        if (!activeTarget) {
+          spinTl.kill();
+          spinTl = gsap.timeline({ repeat: -1 })
+            .to(wrap, { rotation: '+=360', duration: SPIN, ease: 'none' });
+        }
+      }, 60);
+    }
+
+    function snapCorners(el) {
+      var r  = el.getBoundingClientRect();
+      var wx = gsap.getProperty(wrap, 'x');
+      var wy = gsap.getProperty(wrap, 'y');
+      var pos = [
+        { x: r.left  - B      - wx, y: r.top    - B      - wy },
+        { x: r.right + B - C  - wx, y: r.top    - B      - wy },
+        { x: r.right + B - C  - wx, y: r.bottom + B - C  - wy },
+        { x: r.left  - B      - wx, y: r.bottom + B - C  - wy },
+      ];
+      corners.forEach(function (c, i) {
+        gsap.to(c, { x: pos[i].x, y: pos[i].y, duration: HOVER, ease: 'power2.out', overwrite: true });
+      });
+    }
+
+    document.addEventListener('mouseover', function (e) {
+      var target = e.target && e.target.closest ? e.target.closest(TARGET) : null;
+      if (!target || activeTarget === target) return;
+
+      if (resumeTimer) { clearTimeout(resumeTimer); resumeTimer = null; }
+      activeTarget = target;
+
+      spinTl.pause();
+      gsap.killTweensOf(wrap, 'rotation');
+      gsap.set(wrap, { rotation: 0 });
+
+      snapCorners(target);
+
+      function onMove() { snapCorners(target); }
+      target.addEventListener('mousemove', onMove);
+
+      target.addEventListener('mouseleave', function () {
+        target.removeEventListener('mousemove', onMove);
+        activeTarget = null;
+        resetCorners();
+        resumeSpin();
+      }, { once: true });
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>

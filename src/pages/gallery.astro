@@ -345,43 +345,41 @@ const categories = [
   }
 </style>
 
-<script>
-  // ── Lightbox ───────────────────────────────────────────────
-  const lightbox = document.getElementById("lightbox") as HTMLDivElement;
-  const lightboxImg = document.getElementById("lightbox-img") as HTMLImageElement;
-  const closeBtn = document.getElementById("lightbox-close");
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", function () {
+    var lightbox    = document.getElementById("lightbox");
+    var lightboxImg = document.getElementById("lightbox-img");
+    var closeBtn    = document.getElementById("lightbox-close");
 
-  function openLightbox(src: string, alt: string) {
-    lightboxImg.src = src;
-    lightboxImg.alt = alt;
-    lightbox.classList.add("open");
-    document.body.style.overflow = "hidden";
-  }
+    function openLightbox(src, alt) {
+      lightboxImg.src = src;
+      lightboxImg.alt = alt;
+      lightbox.classList.add("open");
+      document.body.style.overflow = "hidden";
+    }
 
-  function closeLightbox() {
-    lightbox.classList.remove("open");
-    document.body.style.overflow = "";
-    // Clear src after transition
-    setTimeout(() => { lightboxImg.src = ""; }, 200);
-  }
+    function closeLightbox() {
+      lightbox.classList.remove("open");
+      document.body.style.overflow = "";
+      setTimeout(function () { lightboxImg.src = ""; }, 200);
+    }
 
-  // Open on image click
-  document.querySelectorAll<HTMLButtonElement>(".carousel-img-btn").forEach(btn => {
-    btn.addEventListener("click", () => {
-      const src = btn.dataset.src ?? "";
-      const label = btn.dataset.catLabel ?? "Photo";
-      openLightbox(src, `${label} photography by Ash Paul`);
+    document.querySelectorAll(".carousel-img-btn").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var src   = btn.dataset.src || "";
+        var label = btn.dataset.catLabel || "Photo";
+        openLightbox(src, label + " photography by Ash Paul");
+      });
     });
-  });
 
-  // Close handlers
-  closeBtn?.addEventListener("click", closeLightbox);
+    if (closeBtn) closeBtn.addEventListener("click", closeLightbox);
 
-  lightbox.addEventListener("click", (e) => {
-    if (e.target === lightbox) closeLightbox();
-  });
+    lightbox.addEventListener("click", function (e) {
+      if (e.target === lightbox) closeLightbox();
+    });
 
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") closeLightbox();
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") closeLightbox();
+    });
   });
 </script>

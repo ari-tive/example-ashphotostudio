@@ -14,7 +14,7 @@ const currentPath = Astro.url.pathname;
     <!-- Logo -->
     <a href="/" class="logo" aria-label="AshPhotoStudio home">
       <img src="/favicon.png" alt="AshPhotoStudio logo" width="36" height="36" />
-      <span class="logo-text font-display">AshPhotoStudio</span>
+      <span class="logo-text">AshPhotoStudio</span>
     </a>
 
     <!-- Desktop nav -->
@@ -22,7 +22,7 @@ const currentPath = Astro.url.pathname;
       {navLinks.map(link => (
         <a
           href={link.href}
-          class:list={["nav-link", { active: currentPath === link.href || (link.href !== "/" && currentPath.startsWith(link.href)) }]}
+          class:list={["nav-link", "cursor-target", { active: currentPath === link.href || (link.href !== "/" && currentPath.startsWith(link.href)) }]}
         >
           {link.label}
         </a>
@@ -90,8 +90,9 @@ const currentPath = Astro.url.pathname;
   }
 
   .logo-text {
+    font-family: "Quicksand", system-ui, sans-serif;
     font-size: 1.25rem;
-    font-weight: 600;
+    font-weight: 700;
     letter-spacing: 0.02em;
     white-space: nowrap;
   }
@@ -212,24 +213,26 @@ const currentPath = Astro.url.pathname;
   }
 </style>
 
-<script>
-  const burgerBtn = document.getElementById("burger-btn");
-  const mobileNav = document.getElementById("mobile-nav");
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", function () {
+    var burgerBtn = document.getElementById("burger-btn");
+    var mobileNav = document.getElementById("mobile-nav");
+    if (!burgerBtn || !mobileNav) return;
 
-  burgerBtn?.addEventListener("click", () => {
-    const isOpen = mobileNav?.classList.toggle("open");
-    burgerBtn.classList.toggle("open", isOpen);
-    burgerBtn.setAttribute("aria-expanded", String(isOpen));
-    mobileNav?.setAttribute("aria-hidden", String(!isOpen));
-  });
+    burgerBtn.addEventListener("click", function () {
+      var isOpen = mobileNav.classList.toggle("open");
+      burgerBtn.classList.toggle("open", isOpen);
+      burgerBtn.setAttribute("aria-expanded", String(isOpen));
+      mobileNav.setAttribute("aria-hidden", String(!isOpen));
+    });
 
-  // Close mobile nav when a link is clicked
-  mobileNav?.querySelectorAll("a").forEach(link => {
-    link.addEventListener("click", () => {
-      mobileNav.classList.remove("open");
-      burgerBtn?.classList.remove("open");
-      burgerBtn?.setAttribute("aria-expanded", "false");
-      mobileNav.setAttribute("aria-hidden", "true");
+    mobileNav.querySelectorAll("a").forEach(function (link) {
+      link.addEventListener("click", function () {
+        mobileNav.classList.remove("open");
+        burgerBtn.classList.remove("open");
+        burgerBtn.setAttribute("aria-expanded", "false");
+        mobileNav.setAttribute("aria-hidden", "true");
+      });
     });
   });
 </script>

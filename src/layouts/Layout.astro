@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import TargetCursor from "../components/TargetCursor.astro";
 
 interface Props {
   title?: string;
@@ -78,11 +79,14 @@ const schema = {
     <!-- Robots -->
     <meta name="robots" content="index, follow" />
 
+    <!-- GSAP (loaded before body so cursor script can use it) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" is:inline></script>
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Quicksand:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
 
@@ -90,6 +94,7 @@ const schema = {
     <script type="application/ld+json" set:html={JSON.stringify(schema)} />
   </head>
   <body>
+    <TargetCursor />
     <slot />
     <script>
       // Smooth anchor scroll polyfill for older browsers
